@@ -1,8 +1,10 @@
+import 'dotenv/config'
 import createError from 'http-errors';
 import express from 'express';
 import logger from 'morgan';
 import cors from 'cors';
 import companiesRouter from './routes/companies.js';
+import mongoose from 'mongoose';
 
 const app = express();
 
@@ -10,6 +12,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
+// connect to mongodb
+try {
+  mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+} catch (err) {
+  console.log(err);
+}
 
 app.use('/companies', companiesRouter);
 
