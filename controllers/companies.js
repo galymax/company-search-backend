@@ -3,7 +3,6 @@ import Company from '../models/Company.js';
 // filter by name and specialities
 async function getFilteredCompanies(req, res) {
   const { name, specialities } = req.query;
-  console.log(req.query);
   const query = {};
   if (name) {
     query.name = new RegExp(name, 'i');
