@@ -11,7 +11,7 @@ async function getFilteredCompanies(req, res) {
   if (specialities) {
     query.specialities = { $in: specialities.split(',') };
   }
-  const companies = await Company.find(query);
+  const companies = await Company.find(query).sort('name');
   res.json(companies);
 }
 
