@@ -17,8 +17,8 @@ async function getFilteredCompanies(req, res) {
 
 // get list of available specialities
 async function getSpecialities(req, res) {
-    const specialities = await Company.distinct('specialities');
-    res.json(specialities);
+  const specialities = await Company.distinct('specialities');
+  res.json(specialities);
 }
 
 export { getFilteredCompanies, getSpecialities };
